@@ -5,3 +5,4 @@ This bat file was made for fast customization of win 11
 i would like help in improving it,
 
 This shall be run in Adminstrator
+<img width="454" height="699" alt="Screenshot 2025-09-13 120247" src="https://github.com/user-attachments/assets/6f31d8b5-84e4-48b4-bb0d-bf9c59956b91" />
