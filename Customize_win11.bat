@@ -17,27 +17,37 @@ if %errorlevel% neq 0 (
     exit /b
 )
 
-echo Disabling transparency effects...
+echo system information..
+systeminfo 
+
+
+echo Disabling transparency effects..
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" /v EnableTransparency /t REG_DWORD /d 0 /f
 
-echo Disabling Widgets (TaskbarDa)...
+echo Disabling Widgets (TaskbarDa)..
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v TaskbarDa /t REG_DWORD /d 0 /f
 
-echo Disabling Task View button...
+echo Disabling Task View button..
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v ShowTaskViewButton /t REG_DWORD /d 0 /f
 
 echo Disabling Web Search in Start...
 reg add "HKCU\Software\Policies\Microsoft\Windows\Explorer" /v DisableSearchBoxSuggestions /t REG_DWORD /d 1 /f
 
-echo Disabling Recently Added Apps...
+echo Disabling Recently Added Apps.
 reg add "HKLM\Software\Microsoft\PolicyManager\default\Start\ShowRecentlyAddedApps" /v value /t REG_DWORD /d 0 /f
 
-echo Disabling Most Used Apps...
+echo Disabling Most Used Apps.
 reg add "HKLM\Software\Microsoft\PolicyManager\default\Start\ShowMostUsedApps" /v value /t REG_DWORD /d 0 /f
 
-echo Disabling Recommended files in Start...
+echo Disabling Recommended files in Start..
 reg add "HKLM\Software\Microsoft\PolicyManager\default\Start\HideRecentJumplists" /v value /t REG_DWORD /d 1 /f
 reg add "HKLM\Software\Microsoft\PolicyManager\default\Start\HideRecentDocs" /v value /t REG_DWORD /d 1 /f
+
+echo Checking for file corruption....:)
+sfc /scannow
+
+echo Checking system performance 
+winsat formal 
 
 echo.
 echo ====================================================
@@ -47,3 +57,4 @@ choice /m "Do you want to restart now?"
 if errorlevel 1 (
     shutdown /r /t 5
 )
+
